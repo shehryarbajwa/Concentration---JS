@@ -1,6 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
+ let objects = ['diamond', 'diamond' , 'paper-plane-o', 'paper-plane-o', 'anchor', 'anchor', 'bolt' ,'bolt', 'cube', 'cube', 'leaf' , 'leaf', 'bicycle' , 'bicycle', 'bomb' , 'bomb'];
+
 
 
 /*
