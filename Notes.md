@@ -35,3 +35,13 @@ deck.addEventListener('click', event => {
 }
 
 6-Contains and classList refer to two unique concepts. Contains refers if the specified element contains the given text. ClassList refers to the entire classList within an element. In our case, the deck's entire ClassList
+
+7-Adding the toggle events
+
+deck.addEventListener('click', event => {
+  const clickTarget = event.target;
+  if (clickTarget.classList.contains('card')){
+    clickTarget.classList.toggle('open');
+    clickTarget.ClassList.toggle('show');
+  }
+}
