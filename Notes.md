@@ -21,3 +21,17 @@ for (card of cards){
     console.log("Hello, I am a card");
     });
 }
+
+4-There is a problem with this approach. It will handle 16 different events which will impact performance. Instead, we could just use eventDelegation instead of eventHandling
+
+5-We could do better. Instead, we could modify the method by adding an event target which will let us know what element was clicked
+
+const deck = document.querySelectorAll('.deck');
+deck.addEventListener('click', event => {
+  const clickTarget = event.target;
+  if (clickTarget.classList.contains('card')){
+    console.log("I am a card")
+  }
+}
+
+6-Contains and classList refer to two unique concepts. Contains refers if the specified element contains the given text. ClassList refers to the entire classList within an element. In our case, the deck's entire ClassList
