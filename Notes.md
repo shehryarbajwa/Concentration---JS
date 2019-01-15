@@ -45,3 +45,43 @@ deck.addEventListener('click', event => {
     clickTarget.ClassList.toggle('show');
   }
 }
+
+8-To avoid complexity, we can create our own function to deal with the eventTargetListeners
+
+func toggleCard(clickTarget){
+  clickTarget.classList.toggle('open');
+  clickTarget.classList.toggle('show');
+}
+
+9-Now we can just call the function from within the deck.addEventListener command
+
+deck.addEventListener('click', event => {
+  const clickTarget = event.target;
+  if (clickTarget.classList.contains('card')){
+    toggleCard(clickTarget);
+  }
+  });
+
+10-This just cleaned our code much faster
+
+11-Next we create an empty array of toggledCards and then push each toggled card to the array.
+
+let toggledCards = [];
+
+deck.addEventListener('click', event => {
+      const clickTarget = event.target;
+      if (clickTarget.classList.contains('card')){
+        toggleCard(clickTarget);
+        addToggleCard(clickTarget);
+      }
+  })
+
+  function toggleCard(clickTarget){
+    clickTarget.classList.toggle('open');
+    clickTarget.ClassList.toggle('show');
+  };
+
+  function addToggleCard(clickTarget){
+    toggledCards.push(clickTarget);
+    console.log(toggledCards);
+  }
