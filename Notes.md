@@ -1,6 +1,6 @@
 Learnings from the project:
 
-1- To query a class:
+1-To query a class:
 
 const cards = document.querySelector('.card');
 
@@ -85,3 +85,21 @@ deck.addEventListener('click', event => {
     toggledCards.push(clickTarget);
     console.log(toggledCards);
   }
+
+12-Now we want 2 cards in the toggledCards array. We need 2 cards since only 2 cards are allowed to match. If we compare three cards, we will not be able to create the match logic. Thus, we can create a conditional that demands that the length of the toggledArray is less than 2 and if it is 2, we can display a message to the console.
+
+
+deck.addEventListener('click', event => {
+  const clickTarget = event.target;
+
+  if (clickTarget.classList.contains('card') && toggledCards.length < 2){
+    toggleCard(clickTarget);
+    addToggleCard(clickTarget);
+
+    if (toggledCards.length === 2){
+      console.log("There are two toggled Cards");
+    }
+  }
+})
+
+13-

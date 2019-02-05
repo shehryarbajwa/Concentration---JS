@@ -3,7 +3,36 @@
  */
  let objects = ['diamond', 'diamond' , 'paper-plane-o', 'paper-plane-o', 'anchor', 'anchor', 'bolt' ,'bolt', 'cube', 'cube', 'leaf' , 'leaf', 'bicycle' , 'bicycle', 'bomb' , 'bomb'];
 
+ var card = document.querySelector('.deck');
+ card.addEventListener('click', openCards, false);
 
+ var button = document.querySelector('button');
+ button.addEventListener('click', deregister, false);
+
+ var repeat = document.querySelector('fa fa-repeat');
+ repeat.addEventListener('click', repeatGame, false);
+
+
+ function openCards(){
+ 	alert("A card was clicked");
+ 	var clickTarget = event.target;
+   if (clickTarget.classList.contains('card')){
+   	clickTarget.classList.toggle('open');
+     clickTarget.classList.toggle('show');
+   }
+ }
+
+ function deregister(){
+ card.removeEventListener('click', openCards);
+ }
+
+ function repeatGame() {
+ alert("A restart request was clicked");
+ 	var clickTarget = event.target;
+   if (clickTarget.classList.contains('card')){
+   	clickTarget.classList.toggle('card');
+ }
+ }
 
 /*
  * Display the cards on the page
