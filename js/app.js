@@ -12,13 +12,15 @@ button2.addEventListener('click', registerAgain, false);
 
 var toggledCards = [];
 
-
 function openCards(){
  alert("A card was clicked");
  var clickTarget = event.target;
-  if (clickTarget.classList.contains('card')){
+  if (clickTarget.classList.contains('card') && toggledCards.length < 2){
    toggleCard(clickTarget);
    addToggledCards(clickTarget);
+   if(toggledCards.length === 2){
+     checkforMatch();
+   }
   }
 }
 
@@ -47,6 +49,15 @@ function addToggledCards(clickTarget){
    toggledCards.push(clickTarget);
    console.log(toggledCards);
 }
+
+function checkforMatch(){
+  if (toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className){
+    console.log("It is a match");
+  } else {
+    console.log("It is not a match");
+  }
+}
+
 
 
 
