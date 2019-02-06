@@ -52,15 +52,15 @@ function addToggledCards(clickTarget){
 
 function checkforMatch(){
   if (toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className){
+    toggledCards[0].classList.toggle('match');
+    toggledCards[1].classList.toggle('match');
+    toggledCards = [];
     console.log("It is a match");
   } else {
     console.log("It is not a match");
+    toggledCards = [];
   }
 }
-
-
-
-
 
 /*
  * Display the cards on the page
