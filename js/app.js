@@ -1,38 +1,55 @@
 /*
  * Create a list that holds all of your cards
  */
- let objects = ['diamond', 'diamond' , 'paper-plane-o', 'paper-plane-o', 'anchor', 'anchor', 'bolt' ,'bolt', 'cube', 'cube', 'leaf' , 'leaf', 'bicycle' , 'bicycle', 'bomb' , 'bomb'];
-
  var card = document.querySelector('.deck');
- card.addEventListener('click', openCards, false);
+card.addEventListener('click', openCards, false);
 
- var button = document.querySelector('button');
- button.addEventListener('click', deregister, false);
+var button = document.querySelector('button');
+button.addEventListener('click', deregister, false);
 
- var repeat = document.querySelector('fa fa-repeat');
- repeat.addEventListener('click', repeatGame, false);
+var button2 = document.querySelector('.register');
+button2.addEventListener('click', registerAgain, false);
+
+var toggledCards = [];
 
 
- function openCards(){
- 	alert("A card was clicked");
- 	var clickTarget = event.target;
+function openCards(){
+ alert("A card was clicked");
+ var clickTarget = event.target;
+  if (clickTarget.classList.contains('card')){
+   toggleCard(clickTarget);
+   addToggledCards(clickTarget);
+  }
+}
+
+function deregister(){
+alert("All card moves have been deregistered")
+card.removeEventListener('click', openCards);
+}
+
+
+function registerAgain(){
+   alert("Register again request was initiated");
+   card.addEventListener('click', openCards, false);
+   var clickTarget = event.target;
    if (clickTarget.classList.contains('card')){
-   	clickTarget.classList.toggle('open');
-     clickTarget.classList.toggle('show');
-   }
- }
+   toggleCard(clickTarget);
+   addToggledCards(clickTarget);
+}
+}
 
- function deregister(){
- card.removeEventListener('click', openCards);
- }
+function toggleCard(clickTarget){
+   clickTarget.classList.toggle('open');
+   clickTarget.classList.toggle('show');
+}
 
- function repeatGame() {
- alert("A restart request was clicked");
- 	var clickTarget = event.target;
-   if (clickTarget.classList.contains('card')){
-   	clickTarget.classList.toggle('card');
- }
- }
+function addToggledCards(clickTarget){
+   toggledCards.push(clickTarget);
+   console.log(toggledCards);
+}
+
+
+
 
 /*
  * Display the cards on the page
