@@ -19,7 +19,7 @@ function openCards(){
    toggleCard(clickTarget);
    addToggledCards(clickTarget);
    if(toggledCards.length === 2){
-     checkforMatch();
+     checkforMatch(clickTarget);
    }
   }
 }
