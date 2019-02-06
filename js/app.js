@@ -58,6 +58,8 @@ function checkforMatch(){
     console.log("It is a match");
   } else {
     console.log("It is not a match");
+    toggleCard(toggledCards[0]);
+    toggleCard(toggledCards[1]);
     toggledCards = [];
   }
 }
