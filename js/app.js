@@ -1,8 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
- var card = document.querySelector('.deck');
-card.addEventListener('click', openCards, false);
+ var deck = document.querySelector('.deck');
+deck.addEventListener('click', openCards, false);
 
 var button = document.querySelector('button');
 button.addEventListener('click', deregister, false);
@@ -28,13 +28,13 @@ function openCards(){
 
 function deregister(){
 alert("All card moves have been deregistered")
-card.removeEventListener('click', openCards);
+deck.removeEventListener('click', openCards);
 }
 
 
 function registerAgain(){
    alert("Register again request was initiated");
-   card.addEventListener('click', openCards, false);
+   deck.addEventListener('click', openCards, false);
    var clickTarget = event.target;
    if (clickTarget.classList.contains('card')){
    toggleCard(clickTarget);
@@ -75,6 +75,9 @@ function shuffleDeck(){
   const arraytoShuffle = Array.from(cardstoShuffle);
   const shuffledCards = shuffle(arraytoShuffle);
   console.log("Shuffled Cards", shuffledCards);
+  for(card of shuffledCards){
+    deck.appendChild(card);
+  }
 }
 
 shuffleDeck();
