@@ -4,11 +4,14 @@
  var deck = document.querySelector('.deck');
 deck.addEventListener('click', openCards, false);
 
+/*toggledCards array is an empty array that will hold the 2 cards clicked on for a potential match */
 var toggledCards = [];
 
+/*gameMoves allows us to initialize the gameMoves to be zero */
 let gameMoves = 0;
 
-
+/*openCards will have a clickTarget, if the click is on a card, and it is not a matched card, and the arrayLength is less than 2
+toggledCards doesn't already include the clickTarget, then we toggle the cards accordingly */
 function openCards(){
  alert("A card was clicked");
  var clickTarget = event.target;
@@ -24,17 +27,24 @@ function openCards(){
 
 
 
-
+/*toggleCard allows us to toggle the classList to open and show once a card is clicked on*/
 function toggleCard(clickTarget){
    clickTarget.classList.toggle('open');
    clickTarget.classList.toggle('show');
 }
 
+/*addToggledCards allows us to chose the clickTarget and add it to the toggledCards array */
 function addToggledCards(clickTarget){
    toggledCards.push(clickTarget);
    console.log(toggledCards);
 }
 
+
+
+/*checkForMatch allows us to check the toggledCards array and determines whether the first card chosen matches
+the second card chosen. If they do match, then we change the classList and toggle it to match and then
+reset the toggledCards array. In case it doesn't, we use the TimeOut function to make the cards toggle back to hide once a certain
+time period has passed */
 function checkforMatch(){
   if (toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className){
     toggledCards[0].classList.toggle('match');
@@ -51,6 +61,10 @@ function checkforMatch(){
   }
 }
 
+/*Shuffle deck will query the document for the deck, then create an array from the NodeList and perform the shuffle function on it.
+Once the cards are shuffled, we then append the child elements of the deck. Since no new objects are being referenced, appendChild will not
+create new elements for the deck */
+
 
 function shuffleDeck(){
   const cardstoShuffle = document.querySelectorAll('.deck li');
@@ -65,7 +79,7 @@ function shuffleDeck(){
 
 shuffleDeck();
 
-
+/* addMove functionality allows us to increment the moves as 2 cards open each time */
 function addMove(){
   gameMoves++;
   const movesText = document.querySelector('.moves');
