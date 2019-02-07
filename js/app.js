@@ -6,6 +6,7 @@ deck.addEventListener('click', openCards, false);
 
 var toggledCards = [];
 
+let gameMoves = 0;
 
 
 function openCards(){
@@ -16,6 +17,7 @@ function openCards(){
    addToggledCards(clickTarget);
    if(toggledCards.length === 2){
      checkforMatch(clickTarget);
+     addMove();
    }
   }
 }
@@ -63,6 +65,12 @@ function shuffleDeck(){
 
 shuffleDeck();
 
+
+function addMove(){
+  gameMoves++;
+  const movesText = document.querySelector('.moves');
+  movesText.innerHTML = gameMoves;
+}
 
 
 /*
