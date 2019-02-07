@@ -4,12 +4,6 @@
  var deck = document.querySelector('.deck');
 deck.addEventListener('click', openCards, false);
 
-var button = document.querySelector('button');
-button.addEventListener('click', deregister, false);
-
-var button2 = document.querySelector('.register');
-button2.addEventListener('click', registerAgain, false);
-
 var toggledCards = [];
 
 
@@ -26,21 +20,8 @@ function openCards(){
   }
 }
 
-function deregister(){
-alert("All card moves have been deregistered")
-deck.removeEventListener('click', openCards);
-}
 
 
-function registerAgain(){
-   alert("Register again request was initiated");
-   deck.addEventListener('click', openCards, false);
-   var clickTarget = event.target;
-   if (clickTarget.classList.contains('card')){
-   toggleCard(clickTarget);
-   addToggledCards(clickTarget);
-}
-}
 
 function toggleCard(clickTarget){
    clickTarget.classList.toggle('open');
