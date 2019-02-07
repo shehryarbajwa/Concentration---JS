@@ -12,6 +12,8 @@ button2.addEventListener('click', registerAgain, false);
 
 var toggledCards = [];
 
+
+
 function openCards(){
  alert("A card was clicked");
  var clickTarget = event.target;
@@ -65,6 +67,19 @@ function checkforMatch(){
     }, 1500);
   }
 }
+
+
+function shuffleDeck(){
+  const cardstoShuffle = document.querySelectorAll('.deck li');
+  console.log("Cards to shuffle", cardstoShuffle);
+  const arraytoShuffle = Array.from(cardstoShuffle);
+  const shuffledCards = shuffle(arraytoShuffle);
+  console.log("Shuffled Cards", shuffledCards);
+}
+
+shuffleDeck();
+
+
 
 /*
  * Display the cards on the page
