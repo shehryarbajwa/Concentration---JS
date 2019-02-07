@@ -15,7 +15,7 @@ var toggledCards = [];
 function openCards(){
  alert("A card was clicked");
  var clickTarget = event.target;
-  if (clickTarget.classList.contains('card') && toggledCards.length < 2){
+  if (clickTarget.classList.contains('card') && (!clickTarget.classList.contains('match')) && toggledCards.length < 2 && !toggledCards.includes(clickTarget)){
    toggleCard(clickTarget);
    addToggledCards(clickTarget);
    if(toggledCards.length === 2){
@@ -57,6 +57,7 @@ function checkforMatch(){
     toggledCards = [];
     console.log("It is a match");
   } else {
+    console.log("It is not a match");
     setTimeout(() => {
       toggleCard(toggledCards[0]);
       toggleCard(toggledCards[1]);
