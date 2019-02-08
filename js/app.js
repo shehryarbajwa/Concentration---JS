@@ -25,6 +25,16 @@ function openCards(){
   }
 }
 
+function hideStar(){
+  const starsNodeList = document.querySelectorAll('.stars li');
+  console.log(starsNodeList);
+  for(star of starsNodeList){
+    star.style.display = 'none';
+  }
+}
+
+hideStar();
+
 
 
 /*toggleCard allows us to toggle the classList to open and show once a card is clicked on*/
