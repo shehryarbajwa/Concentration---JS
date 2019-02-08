@@ -24,7 +24,7 @@ function openCards(){
    }
   }
 }
-
+/*hideStar will use the CSS property of style.display = none to hide a star */
 function hideStar(){
   const starsNodeList = document.querySelectorAll('.stars li');
   console.log(starsNodeList);
