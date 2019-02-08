@@ -21,6 +21,7 @@ function openCards(){
    if(toggledCards.length === 2){
      checkforMatch(clickTarget);
      addMove();
+     checkScore();
    }
   }
 }
@@ -93,7 +94,7 @@ function addMove(){
 }
 
 function checkScore(){
-  if(gameMoves === 2 || gameMoves === 24){
+  if(gameMoves === 9 || gameMoves === 17 || gameMoves === 25){
     hideStar();
   }
 }
@@ -104,9 +105,13 @@ function hideStar(){
   const starsNodeList = document.querySelectorAll('.stars li');
   console.log(starsNodeList);
   for(star of starsNodeList){
-    star.style.display = 'none';
+      if(star.style.display !== 'none'){
+      star.style.display = 'none';
+      break;
+    }
   }
 }
+
 
 
 
