@@ -25,20 +25,9 @@ function openCards(){
   }
 }
 
-function checkScore(){
-  if(moves === 2 || moves === 24){
-    hideStar();
-  }
-}
-/*hideStar will use the CSS property of style.display = none to hide a star */
 
-function hideStar(){
-  const starsNodeList = document.querySelectorAll('.stars li');
-  console.log(starsNodeList);
-  for(star of starsNodeList){
-    star.style.display = 'none';
-  }
-}
+
+
 
 
 
@@ -102,6 +91,24 @@ function addMove(){
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = gameMoves;
 }
+
+function checkScore(){
+  if(gameMoves === 2 || gameMoves === 24){
+    hideStar();
+  }
+}
+
+/*hideStar will use the CSS property of style.display = none to hide a star */
+
+function hideStar(){
+  const starsNodeList = document.querySelectorAll('.stars li');
+  console.log(starsNodeList);
+  for(star of starsNodeList){
+    star.style.display = 'none';
+  }
+}
+
+
 
 
 /*
