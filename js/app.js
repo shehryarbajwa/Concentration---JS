@@ -113,7 +113,21 @@ function hideStar(){
   }
 }
 
+function startClock(){
+  let clockId = setTimeout( () => {
+    console.log('2 second have passed');
+  },2000);
+}
+startClock();
 
+function startIntervalClock(){
+  let time = 0
+  let clockId = setInterval( () => {
+    time++;
+    console.log(time);
+  }, 2000);
+}
+startIntervalClock();
 
 
 
