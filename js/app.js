@@ -93,6 +93,7 @@ function addMove(){
   movesText.innerHTML = gameMoves;
 }
 
+/*checkScore will be run in three intervals at 9 moves, 17 moves and 25 moves */
 function checkScore(){
   if(gameMoves === 9 || gameMoves === 17 || gameMoves === 25){
     hideStar();
