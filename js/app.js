@@ -10,6 +10,34 @@ var toggledCards = [];
 /*gameMoves allows us to initialize the gameMoves to be zero */
 let gameMoves = 0;
 
+/*timeOff means the time hasn't started yet */
+let clockOff = true;
+
+let time = 0;
+
+deck.addEventListener('click', event => {
+  const clickTarget = event.target;
+  if(isclickValid(clickTarget)){
+  if(clockOff){
+    startClock();
+    clockOff = false;
+  }
+})
+}
+
+function startClock(){
+  let clockId = setInterval(() => {
+    time++;
+    console.log(time);
+  },1000);
+}
+
+function displayTime(){
+  const clock = document.querySelector('.clock');
+  console.log(clock);
+  clock.innerHTML = time;
+}
+
 /*openCards will have a clickTarget, if the click is on a card, and it is not a matched card, and the arrayLength is less than 2
 toggledCards doesn't already include the clickTarget, then we toggle the cards accordingly */
 function openCards(){
@@ -112,22 +140,6 @@ function hideStar(){
     }
   }
 }
-
-function startClock(){
-  let clockId = setTimeout( () => {
-    console.log('2 second have passed');
-  },2000);
-}
-startClock();
-
-function startIntervalClock(){
-  let time = 0
-  let clockId = setInterval( () => {
-    time++;
-    console.log(time);
-  }, 2000);
-}
-startIntervalClock();
 
 
 
