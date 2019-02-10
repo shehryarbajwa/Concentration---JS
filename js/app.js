@@ -10,20 +10,19 @@ var toggledCards = [];
 /*gameMoves allows us to initialize the gameMoves to be zero */
 let gameMoves = 0;
 
-/*timeOff means the time hasn't started yet */
+/*clockOff means the time hasn't started yet */
 let clockOff = true;
 
 let time = 0;
 
 deck.addEventListener('click', event => {
   const clickTarget = event.target;
-  if(isclickValid(clickTarget)){
+  if(clickTarget.classList.contains('card') && (!clickTarget.classList.contains('match')) && toggledCards.length < 2 && !toggledCards.includes(clickTarget)){
   if(clockOff){
     startClock();
     clockOff = false;
   }
-})
-}
+}});
 
 function startClock(){
   let clockId = setInterval(() => {
@@ -35,7 +34,7 @@ function startClock(){
 function displayTime(){
   const clock = document.querySelector('.clock');
   console.log(clock);
-  clock.innerHTML = time;
+  clock.innerText = time;
 }
 
 /*openCards will have a clickTarget, if the click is on a card, and it is not a matched card, and the arrayLength is less than 2
@@ -43,7 +42,7 @@ toggledCards doesn't already include the clickTarget, then we toggle the cards a
 function openCards(){
  alert("A card was clicked");
  var clickTarget = event.target;
-  if (clickTarget.classList.contains('card') && (!clickTarget.classList.contains('match')) && toggledCards.length < 2 && !toggledCards.includes(clickTarget)){
+  if (validClick(clickTarget)){
    toggleCard(clickTarget);
    addToggledCards(clickTarget);
    if(toggledCards.length === 2){
@@ -54,13 +53,11 @@ function openCards(){
   }
 }
 
-
-
-
-
-
-
-
+function validClick(clickTarget){
+  return (
+    clickTarget.classList.contains('card') && (!clickTarget.classList.contains('match')) && toggledCards.length < 2 && !toggledCards.includes(clickTarget)
+  );
+}
 
 /*toggleCard allows us to toggle the classList to open and show once a card is clicked on*/
 function toggleCard(clickTarget){
@@ -73,6 +70,7 @@ function addToggledCards(clickTarget){
    toggledCards.push(clickTarget);
    console.log(toggledCards);
 }
+
 
 
 
