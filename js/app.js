@@ -4,13 +4,11 @@
 
 /*toggledCards array is an empty array that will hold the 2 cards clicked on for a potential match */
 var toggledCards = [];
-
 /*gameMoves allows us to initialize the gameMoves to be zero */
 var gameMoves = 0;
-
 /*clockOff means the time hasn't started yet */
 var clockOff = true;
-
+var clockId;
 var time = 0;
 
 
@@ -53,8 +51,16 @@ function startClock(){
 
 function displayTime(){
   const clock = document.querySelector('.clock');
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+
+  if(seconds < 10){
+      clock.innerHTML = `${minutes}:0${seconds}`;
+  } else {
+      clock.innerHTML = `${minutes}:${seconds}`;
+  }
+
   console.log(clock);
-  clock.innerText = time;
 }
 
 function validClick(clickTarget){
