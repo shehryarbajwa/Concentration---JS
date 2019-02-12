@@ -16,31 +16,32 @@ var time = 0;
 
 /*openCards will have a clickTarget, if the click is on a card, and it is not a matched card, and the arrayLength is less than 2
 toggledCards doesn't already include the clickTarget, then we toggle the cards accordingly */
-function openCards(){
- var clickTarget = event.target;
-  if (validClick(clickTarget)){
-   toggleCard(clickTarget);
-   addToggledCards(clickTarget);
-   if(toggledCards.length === 2){
-     checkforMatch(clickTarget);
-     addMove();
-     checkScore();
-   }
-  }
-}
-
 var deck = document.querySelector('.deck');
-deck.addEventListener('click', openCards, false);
 
-document.querySelector('.deck').addEventListener('click', event => {
-  const clickTarget = event.target;
-  if(validClick(clickTarget)){
-    alert("A card was clicked");
-    if(clockOff){
-      startClock();
-      clockOff = false;
-    }
-}});
+  deck.addEventListener('click', event =>{
+	const clickTarget = event.target;
+	if (validClick(clickTarget)){
+		if (clockOff){
+			startClock();
+			clockOff = false;
+		}
+	}
+
+	if (validClick(clickTarget)){
+		toggleCard(clickTarget);
+		addToggledCards(clickTarget);
+
+		if (toggledCards.length === 2){
+			console.log('Number 2!');
+			checkforMatch(clickTarget);
+			addMove();
+		  checkScore();
+	}
+		}
+	});
+
+
+
 
 function startClock(){
   let clockId = setInterval(() => {
