@@ -1,46 +1,22 @@
 /*
  * Create a list that holds all of your cards
  */
- var deck = document.querySelector('.deck');
-deck.addEventListener('click', openCards, false);
 
 /*toggledCards array is an empty array that will hold the 2 cards clicked on for a potential match */
 var toggledCards = [];
 
 /*gameMoves allows us to initialize the gameMoves to be zero */
-let gameMoves = 0;
+var gameMoves = 0;
 
 /*clockOff means the time hasn't started yet */
-let clockOff = true;
+var clockOff = true;
 
-let time = 0;
+var time = 0;
 
-deck.addEventListener('click', event => {
-  const clickTarget = event.target;
-  if(clickTarget.classList.contains('card') && (!clickTarget.classList.contains('match')) && toggledCards.length < 2 && !toggledCards.includes(clickTarget)){
-  if(clockOff){
-    startClock();
-    clockOff = false;
-  }
-}});
-
-function startClock(){
-  let clockId = setInterval(() => {
-    time++;
-    console.log(time);
-  },1000);
-}
-
-function displayTime(){
-  const clock = document.querySelector('.clock');
-  console.log(clock);
-  clock.innerText = time;
-}
 
 /*openCards will have a clickTarget, if the click is on a card, and it is not a matched card, and the arrayLength is less than 2
 toggledCards doesn't already include the clickTarget, then we toggle the cards accordingly */
 function openCards(){
- alert("A card was clicked");
  var clickTarget = event.target;
   if (validClick(clickTarget)){
    toggleCard(clickTarget);
@@ -51,6 +27,33 @@ function openCards(){
      checkScore();
    }
   }
+}
+
+var deck = document.querySelector('.deck');
+deck.addEventListener('click', openCards, false);
+
+document.querySelector('.deck').addEventListener('click', event => {
+  const clickTarget = event.target;
+  if(validClick(clickTarget)){
+    alert("A card was clicked");
+    if(clockOff){
+      startClock();
+      clockOff = false;
+    }
+}});
+
+function startClock(){
+  let clockId = setInterval(() => {
+      time++;
+      displayTime();
+      console.log(time);
+      },1000);
+}
+
+function displayTime(){
+  const clock = document.querySelector('.clock');
+  console.log(clock);
+  clock.innerText = time;
 }
 
 function validClick(clickTarget){
@@ -70,9 +73,6 @@ function addToggledCards(clickTarget){
    toggledCards.push(clickTarget);
    console.log(toggledCards);
 }
-
-
-
 
 /*checkForMatch allows us to check the toggledCards array and determines whether the first card chosen matches
 the second card chosen. If they do match, then we change the classList and toggle it to match and then
@@ -138,8 +138,6 @@ function hideStar(){
     }
   }
 }
-
-
 
 /*
  * Display the cards on the page
