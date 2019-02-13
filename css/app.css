@@ -53,6 +53,15 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
+.modal_heading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-top: 2px solid orange;
+  border-bottom: 2px solid gray;
+}
+
 /*
  * Styles for the deck of cards
  */
