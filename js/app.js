@@ -146,6 +146,13 @@ function hideStar(){
   }
 }
 
+function toggleModal(){
+  const toggleModal = document.querySelector('.modal_background');
+  toggleModal.classList.toggle('hide');
+}
+toggleModal();
+toggleModal();
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
