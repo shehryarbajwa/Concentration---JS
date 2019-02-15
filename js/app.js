@@ -13,7 +13,7 @@ var time = 0;
 
 time = 121;
 displayTime();
-gameMoves = 17;
+gameMoves = 1;
 checkScore();
 
 toggleModal();
@@ -170,9 +170,31 @@ function updateModal(){
 
   timeStats.innerHTML = `Time = ${clockTime}`;
   moveStats.innerHTML = `Moves = ${gameMoves}`;
+  starsStats.innerHTML = `Stars = ${stars}`;
 
 }
 updateModal();
+
+function getStars(){
+  stars = document.querySelectorAll('.stars li');
+  starCount = 0;
+
+  for (star of stars){
+    if (star.style.display !== 'none'){
+      starCount++;
+    }
+  }
+  console.log(starCount);
+  return starCount;
+}
+
+document.querySelector('.modal__cancel').addEventListener('click', () => {
+  toggleModal();
+});
+
+document.querySelector('.modal__replay').addEventListener('click', () => {
+  
+});
 
 /*
  * Display the cards on the page
