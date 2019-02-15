@@ -11,6 +11,12 @@ var clockOff = true;
 var clockId;
 var time = 0;
 
+time = 121;
+displayTime();
+gameMoves = 17;
+checkScore();
+
+toggleModal();
 
 /*openCards will have a clickTarget, if the click is on a card, and it is not a matched card, and the arrayLength is less than 2
 toggledCards doesn't already include the clickTarget, then we toggle the cards accordingly */
@@ -152,6 +158,21 @@ function toggleModal(){
 }
 toggleModal();
 toggleModal();
+
+function updateModal(){
+  const timeStats  = document.querySelector('.modal__time');
+  const clockTime  = document.querySelector('.clock').innerHTML;
+  const moveStats  = document.querySelector('.modal__moves');
+  const starsStats = document.querySelector('.modal__stars');
+  const stars = getStars();
+
+
+
+  timeStats.innerHTML = `Time = ${clockTime}`;
+  moveStats.innerHTML = `Moves = ${gameMoves}`;
+
+}
+updateModal();
 
 /*
  * Display the cards on the page
