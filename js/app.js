@@ -152,6 +152,38 @@ function hideStar(){
   }
 }
 
+function resetGame(){
+  resetClockandTime();
+  resetStars();
+  resetGameMoves();
+  shuffleDeck();
+}
+
+function resetClockandTime(){
+  stopClock();
+  clockOff = true;
+  time = 0;
+  displayTime();
+}
+
+
+function stopClock(){
+
+}
+
+function resetGameMoves(){
+  moves = 0;
+  document.querySelector('.moves').innerHTML = moves;
+}
+
+function resetStars(){
+  stars = 0;
+  const starList = document.querySelectorAll('.stars li');
+  for(stars of starsList){
+    star.style.display = 'inline';
+  }
+}
+
 function toggleModal(){
   const toggleModal = document.querySelector('.modal_background');
   toggleModal.classList.toggle('hide');
@@ -192,9 +224,11 @@ document.querySelector('.modal__cancel').addEventListener('click', () => {
   toggleModal();
 });
 
-document.querySelector('.modal__replay').addEventListener('click', () => {
-  
-});
+document.querySelector('.modal__replay').addEventListener('click', resetGame);
+
+document.querySelector('.restart').addEventListener('click', resetGame);
+
+
 
 /*
  * Display the cards on the page
