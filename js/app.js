@@ -170,7 +170,7 @@ function toggleModal(){
   if(toggleModal.classList.contains('hide')) {
         toggleModal.classList.remove('hide');
     } else {
-        //toggleModal.classList.add('hide');
+        toggleModal.classList.add('hide');
     }
 }
 
