@@ -219,6 +219,7 @@ function resetGame(){
   resetClockandTime();
   resetStars();
   resetGameMoves();
+  resetCards();
   shuffleDeck();
 }
 
@@ -242,8 +243,8 @@ function stopClock() {
 }
 
 function resetGameMoves(){
-  moves = 0;
-  document.querySelector('.moves').innerHTML = moves;
+  gameMoves = 0;
+  document.querySelector('.moves').innerHTML = gameMoves;
 }
 
 function resetStars(){
