@@ -10,13 +10,14 @@ var gameMoves = 0;
 var clockOff = true;
 var clockId;
 var time = 0;
+let matched = 0;
+const TOTAL_PAIRS = 8;
 
-time = 121;
+time = 0;
 displayTime();
-gameMoves = 1;
+gameMoves = 0;
 checkScore();
-
-toggleModal();
+resetCards();
 
 /*openCards will have a clickTarget, if the click is on a card, and it is not a matched card, and the arrayLength is less than 2
 toggledCards doesn't already include the clickTarget, then we toggle the cards accordingly */
@@ -31,6 +32,7 @@ var deck = document.querySelector('.deck');
 		}
 	}
 
+
 	if (validClick(clickTarget)){
 		toggleCard(clickTarget);
 		addToggledCards(clickTarget);
@@ -40,18 +42,25 @@ var deck = document.querySelector('.deck');
 			checkforMatch(clickTarget);
 			addMove();
 		  checkScore();
-	}
+	   }
 		}
+
+
 	});
 
+  document.querySelector('.modal__cancel').addEventListener('click', () => {
+    toggleModal();
+  });
 
+  document.querySelector('.modal__replay').addEventListener('click', replayGame);
+
+  document.querySelector('.restart').addEventListener('click', resetGame);
 
 
 function startClock(){
   let clockId = setInterval(() => {
       time++;
       displayTime();
-      console.log(time);
       },1000);
 }
 
@@ -96,7 +105,11 @@ function checkforMatch(){
     toggledCards[0].classList.toggle('match');
     toggledCards[1].classList.toggle('match');
     toggledCards = [];
-    console.log("It is a match");
+    matched++;
+    console.log(matched);
+    if (matched === TOTAL_PAIRS) {
+			gameOver();
+			}
   } else {
     console.log("It is not a match");
     setTimeout(() => {
@@ -125,6 +138,12 @@ function shuffleDeck(){
 
 shuffleDeck();
 
+function gameOver(){
+  stopClock();
+  updateModal();
+  toggleModal();
+}
+
 /* addMove functionality allows us to increment the moves as 2 cards open each time */
 function addMove(){
   gameMoves++;
@@ -152,37 +171,7 @@ function hideStar(){
   }
 }
 
-function resetGame(){
-  resetClockandTime();
-  resetStars();
-  resetGameMoves();
-  shuffleDeck();
-}
 
-function resetClockandTime(){
-  stopClock();
-  clockOff = true;
-  time = 0;
-  displayTime();
-}
-
-
-function stopClock(){
-
-}
-
-function resetGameMoves(){
-  moves = 0;
-  document.querySelector('.moves').innerHTML = moves;
-}
-
-function resetStars(){
-  stars = 0;
-  const starList = document.querySelectorAll('.stars li');
-  for(stars of starsList){
-    star.style.display = 'inline';
-  }
-}
 
 function toggleModal(){
   const toggleModal = document.querySelector('.modal_background');
@@ -220,15 +209,49 @@ function getStars(){
   return starCount;
 }
 
-document.querySelector('.modal__cancel').addEventListener('click', () => {
+function replayGame(){
+  resetGame();
   toggleModal();
-});
+}
 
-document.querySelector('.modal__replay').addEventListener('click', resetGame);
+function resetCards(){
+  const cards = document.querySelectorAll('.deck li');
+  for(let card of cards){
+    card.className = 'card';
+  }
+}
+function resetGame(){
+  resetClockandTime();
+  resetStars();
+  resetGameMoves();
+  shuffleDeck();
+  resetCards();
+  matched = 0;
+}
 
-document.querySelector('.restart').addEventListener('click', resetGame);
+function resetClockandTime(){
+  stopClock();
+}
 
 
+function stopClock(){
+  clockOff = true;
+  time = 0;
+  displayTime();
+}
+
+function resetGameMoves(){
+  moves = 0;
+  document.querySelector('.moves').innerHTML = moves;
+}
+
+function resetStars(){
+  stars = 0;
+  const starList = document.querySelectorAll('.stars li');
+  for(stars of starList){
+    stars.style.display = 'inline';
+  }
+}
 
 /*
  * Display the cards on the page
