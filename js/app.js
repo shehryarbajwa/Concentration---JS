@@ -3,20 +3,16 @@
  */
 
 /*toggledCards array is an empty array that will hold the 2 cards clicked on for a potential match */
-var toggledCards = [];
+let toggledCards = [];
 /*gameMoves allows us to initialize the gameMoves to be zero */
-var gameMoves = 0;
+let gameMoves = 0;
 /*clockOff means the time hasn't started yet */
-var clockOff = true;
-var clockId;
-var time = 0;
+let clockOff = true;
+let clockId;
+let time = 0;
 let matched = 0;
-const TOTAL_PAIRS = 8;
+const cardPairs = 8;
 
-time = 0;
-displayTime();
-gameMoves = 0;
-checkScore();
 resetCards();
 
 /*openCards will have a clickTarget, if the click is on a card, and it is not a matched card, and the arrayLength is less than 2
@@ -52,17 +48,20 @@ var deck = document.querySelector('.deck');
     toggleModal();
   });
 
-  document.querySelector('.modal__replay').addEventListener('click', replayGame);
+  document.querySelector('.modal__replay').addEventListener('click', () => {
+      replayGame();
+  });
 
   document.querySelector('.restart').addEventListener('click', resetGame);
 
 
-function startClock(){
-  let clockId = setInterval(() => {
-      time++;
-      displayTime();
-      },1000);
-}
+  function startClock(){
+  	clockId = setInterval(() => {
+  		time++;
+  		console.log(time);
+  		displayTime();
+  	},1000);
+  }
 
 function displayTime(){
   const clock = document.querySelector('.clock');
@@ -107,11 +106,10 @@ function checkforMatch(){
     toggledCards = [];
     matched++;
     console.log(matched);
-    if (matched === TOTAL_PAIRS) {
+    if (matched === cardPairs) {
 			gameOver();
 			}
   } else {
-    console.log("It is not a match");
     setTimeout(() => {
       toggleCard(toggledCards[0]);
       toggleCard(toggledCards[1]);
@@ -137,12 +135,6 @@ function shuffleDeck(){
 }
 
 shuffleDeck();
-
-function gameOver(){
-  stopClock();
-  updateModal();
-  toggleModal();
-}
 
 /* addMove functionality allows us to increment the moves as 2 cards open each time */
 function addMove(){
@@ -175,10 +167,12 @@ function hideStar(){
 
 function toggleModal(){
   const toggleModal = document.querySelector('.modal_background');
-  toggleModal.classList.toggle('hide');
+  if(toggleModal.classList.contains('hide')) {
+        toggleModal.classList.remove('hide');
+    } else {
+        //toggleModal.classList.add('hide');
+    }
 }
-toggleModal();
-toggleModal();
 
 function updateModal(){
   const timeStats  = document.querySelector('.modal__time');
@@ -194,7 +188,6 @@ function updateModal(){
   starsStats.innerHTML = `Stars = ${stars}`;
 
 }
-updateModal();
 
 function getStars(){
   stars = document.querySelectorAll('.stars li');
@@ -212,6 +205,7 @@ function getStars(){
 function replayGame(){
   resetGame();
   toggleModal();
+  resetCards();
 }
 
 function resetCards(){
@@ -221,23 +215,30 @@ function resetCards(){
   }
 }
 function resetGame(){
+  matched = 0;
   resetClockandTime();
   resetStars();
   resetGameMoves();
   shuffleDeck();
-  resetCards();
-  matched = 0;
 }
 
 function resetClockandTime(){
   stopClock();
-}
-
-
-function stopClock(){
   clockOff = true;
   time = 0;
   displayTime();
+}
+
+function gameOver(){
+  stopClock();
+  resetCards();
+  toggleModal();
+  updateModal();
+}
+
+
+function stopClock() {
+	clearInterval(clockId);
 }
 
 function resetGameMoves(){
