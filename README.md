@@ -23,4 +23,5 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 The game has a total of 16 moves and 8 paired matches. There is a timer that begins once the first card is clicked. After, the first card is clicked, the timer begins. Once the timer starts, it stops once the gamePlay is finished and a modal appears congratulating the player. The score is calculated by how many moves it takes to finish all 8 pairs of cards. Once the modal appears, the player can choose between cancelling or choosing to replay the game. The reset button shuffles the cards again and allows you restart the game.
 
-https://camo.githubusercontent.com/62bfca8e77f922085615c2304f324f448d691c5c/68747470733a2f2f64313768323774366835313561352e636c6f756466726f6e742e6e65742f746f706865722f323031372f46656272756172792f35383962623937325f73637265656e2d73686f742d323031372d30322d30372d61742d332e30332e31352d706d2f73637265656e2d73686f742d323031372d30322d30372d61742d332e30332e31352d706d2e706e67
+
+![0](https://camo.githubusercontent.com/62bfca8e77f922085615c2304f324f448d691c5c/68747470733a2f2f64313768323774366835313561352e636c6f756466726f6e742e6e65742f746f706865722f323031372f46656272756172792f35383962623937325f73637265656e2d73686f742d323031372d30322d30372d61742d332e30332e31352d706d2f73637265656e2d73686f742d323031372d30322d30372d61742d332e30332e31352d706d2e706e67)
